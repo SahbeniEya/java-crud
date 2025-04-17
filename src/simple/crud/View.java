@@ -260,10 +260,20 @@ public class View extends javax.swing.JFrame {
          l = rs.getString("last_name");
          e = rs.getString("email");
          model.addRow(new Object[]{i, f, l, e});
-       }
-     }catch(Exception e){
-            System.out.println("Error "+ e.getMessage());
-     }   
+       Sanitize user input before rendering it as HTML:
+
+Sanitize user input before rendering it as HTML:
+
+```java
+// Import the OWASP ESAPI library
+import org.owasp.esapi.ESAPI;
+
+// Instead of:
+out.println(userInput);
+
+// Use:
+out.println(ESAPI.encoder().encodeForHTML(userInput));
+```\n// Import the OWASP ESAPI library   
                 
        
     }
@@ -300,19 +310,29 @@ public class View extends javax.swing.JFrame {
                 em = email.getText();
                 query = "INSERT INTO user (first_name, last_name, email) "
                         + "VALUES ('"+fN+"','"+lN+"','"+em+"')";
-               
-               st.executeUpdate(query);
+Sanitize user input before rendering it as HTML:
+
+```java
+// Import the OWASP ESAPI library
+import org.owasp.esapi.ESAPI;
+
+// Instead of:
+out.println(userInput);
+
+// Use:
+out.println(ESAPI.encoder().encodeForHTML(userInput));
+```\n               st.executeUpdate(query);
                fName.setText("");
                lName.setText("");
                email.setText("");
                showMessageDialog(null, "Successfully registered.");
                loadData();
                con.close();
-            }   
-        }catch(Exception e){
-            System.out.println("Error "+ e.getMessage());
-            
-        }
+            Sanitize user input before rendering it as HTML:
+
+```java
+// Import the OWASP ESAPI library
+import org.owasp.esapi.ESAPI;
         
     }//GEN-LAST:event_submitActionPerformed
 
@@ -333,8 +353,18 @@ public class View extends javax.swing.JFrame {
             ID = serachData.getText();
             if("".equals(ID)){
               JOptionPane.showMessageDialog(new JFrame(), "ID is require", "Dialog",
-                                     JOptionPane.ERROR_MESSAGE);
-            }else {
+Sanitize user input before rendering it as HTML:
+
+```java
+// Import the OWASP ESAPI library
+import org.owasp.esapi.ESAPI;
+
+// Instead of:
+out.println(userInput);
+
+// Use:
+out.println(ESAPI.encoder().encodeForHTML(userInput));
+```\n            }else {
                String sql = "SELECT * FROM user WHERE id="+ID;
                ResultSet rs = st.executeQuery(sql);
                while(rs.next()){
@@ -351,19 +381,22 @@ public class View extends javax.swing.JFrame {
                   JOptionPane.showMessageDialog(new JFrame(), "invalid ID", "Dialog",
                                      JOptionPane.ERROR_MESSAGE);
                }
-            }
-        }catch(Exception e){
-            System.out.println("Error "+ e.getMessage());
-            
-        } 
-    }//GEN-LAST:event_updateActionPerformed
+            Sanitize user input before rendering it as HTML:
+
+```java
+// Import the OWASP ESAPI library
+import org.owasp.esapi.ESAPI;
+
 
     private void searchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtnActionPerformed
         String ID;
         int notFound = 0;
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
+}
+        }catch(Exception e){
+            System.out.println("Error "+ e.getMessage());
             
+        }\n            
             String url = "jdbc:MySQL://localhost:3306/java_users_db";
             String user = "root";
             String pass = "";
@@ -399,8 +432,18 @@ public class View extends javax.swing.JFrame {
         
     }//GEN-LAST:event_searchBtnActionPerformed
 
-    private void deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionPerformed
-        String ID;
+Sanitize user input before rendering it as HTML:
+
+```java
+// Import the OWASP ESAPI library
+import org.owasp.esapi.ESAPI;
+
+// Instead of:
+out.println(userInput);
+
+// Use:
+out.println(ESAPI.encoder().encodeForHTML(userInput));
+```\n        String ID;
         int notFound = 0;
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -430,12 +473,12 @@ public class View extends javax.swing.JFrame {
                   JOptionPane.showMessageDialog(new JFrame(), "invalid ID", "Dialog",
                                      JOptionPane.ERROR_MESSAGE);
                }
-            }
-        }catch(Exception e){
-            System.out.println("Error "+ e.getMessage());
-            
-        }  
-    }//GEN-LAST:event_deleteActionPerformed
+            Sanitize user input before rendering it as HTML:
+
+```java
+// Import the OWASP ESAPI library
+import org.owasp.esapi.ESAPI;
+
 
     private void serachDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_serachDataActionPerformed
         // TODO add your handling code here:
